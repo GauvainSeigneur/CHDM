@@ -76,13 +76,6 @@ dependencies {
     def butterKnifeVersion = '8.8.1'
     kapt "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
     implementation "com.jakewharton:butterknife:$butterKnifeVersion"
-    def daggerVersion = '2.16'
-    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
-    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
-    kaptTest "com.google.dagger:dagger-compiler:$daggerVersion"
-    implementation "com.google.dagger:dagger:$daggerVersion"
-    implementation "com.google.dagger:dagger-android:$daggerVersion"
-    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
     //Canary leak
     def canaryVersion = '1.6.1'
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$canaryVersion"

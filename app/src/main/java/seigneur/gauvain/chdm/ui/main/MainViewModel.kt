@@ -6,29 +6,27 @@ import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModel
 import android.arch.paging.LivePagedListBuilder
 import android.arch.paging.PagedList
-import javax.inject.Inject
 
 import io.reactivex.disposables.CompositeDisposable
 import retrofit2.Response
+import seigneur.gauvain.chdm.data.api.CooperHewittService
 import seigneur.gauvain.chdm.data.model.exhibition.ExhibitionList
 import seigneur.gauvain.chdm.data.model.exhibition.Exhibition
 import timber.log.Timber
 import seigneur.gauvain.chdm.data.repository.ApiTestRepository
 
+class MainViewModel(var mApiTestRepository:ApiTestRepository) : ViewModel() {
 
-class MainViewModel @Inject
-constructor() : ViewModel() {
+    //lateinit var mApiTestRepository:ApiTestRepository
 
-    @Inject
-    lateinit var mApiTestRepository: ApiTestRepository
-
-    private val mCompositeDisposable = CompositeDisposable()
+    private val mCompositeDisposable= CompositeDisposable()
     private val hoursMutableLiveData = MutableLiveData<Response<Void>>()
 
 
     //List of exhibitions
     private var mExhibitions= ArrayList<Exhibition>()
     private var mExhibitionsMutableLiveData = MutableLiveData<ArrayList<Exhibition>>()
+
     val exhibitionList: LiveData<ArrayList<Exhibition>>
         get() = mExhibitionsMutableLiveData
 
@@ -42,15 +40,17 @@ constructor() : ViewModel() {
     * PUBLIC METHODS CALLED IN Fragment
     *********************************************************************************************/
     fun init() {
+       // mApiTestRepository = ApiTestRepository(mCooperHewittService)
     }
 
     fun getExhibitionsAndObjectsForEach() {
         mCompositeDisposable.add(
             mApiTestRepository.getExhibitions()
-                .flatMapIterable {
+                ?.flatMapIterable {
+                    Timber.d("we get hexib $it")
                     it.exhibitions
                 }
-                .flatMap {it ->
+                ?.flatMap {it ->
                     mExhibitions.add(it) //create list of exhibition
                     //mApiTestRepository.getObjects(mExhibitions[mExhibitions.indexOf(it)].id)
                     mApiTestRepository.getObjects(it.id)
@@ -58,7 +58,7 @@ constructor() : ViewModel() {
                                 exhibObject -> addObjectsAndIllustration(mExhibitions.indexOf(it), exhibObject)
                         }
                 }
-            .subscribe(
+                !!.subscribe(
                 this::onListReceived,
                 this::onErrorHappened,
                 this::onFlatMapComplete
@@ -114,7 +114,7 @@ constructor() : ViewModel() {
     fun getExhibitions() {
         mCompositeDisposable.add(
             mApiTestRepository.getExhibitions()
-                .subscribe(
+                !!.subscribe(
                     this::onExhibitionsFound,         //User found - display info
                     this::onErrorHappened    //Error happened during the request
                 )
@@ -131,7 +131,7 @@ constructor() : ViewModel() {
     fun getHours() {
         mCompositeDisposable.add(
                 mApiTestRepository.getHours()
-                        .subscribe(
+                        !!.subscribe(
                                 this::onResponse,         //User found - display info
                                 this::onErrorHappened    //Error happened during the request
                         )

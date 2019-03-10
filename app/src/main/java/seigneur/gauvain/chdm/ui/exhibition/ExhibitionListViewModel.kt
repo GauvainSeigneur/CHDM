@@ -7,11 +7,8 @@ import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModel
 import android.arch.paging.LivePagedListBuilder
 import android.arch.paging.PagedList
-import javax.inject.Inject
 
 import io.reactivex.disposables.CompositeDisposable
-import retrofit2.Response
-import seigneur.gauvain.chdm.data.model.exhibition.ExhibitionList
 import seigneur.gauvain.chdm.data.model.exhibition.Exhibition
 import timber.log.Timber
 import seigneur.gauvain.chdm.data.repository.ApiTestRepository
@@ -20,10 +17,10 @@ import seigneur.gauvain.chdm.ui.exhibition.list.data.datasource.ExhibitionDataSo
 import seigneur.gauvain.chdm.ui.exhibition.list.data.datasource.ExhibitionsDataSource
 
 
-class ExhibitionListViewModel @Inject
+class ExhibitionListViewModel
+
 constructor() : ViewModel() {
 
-    @Inject
     lateinit var mApiTestRepository: ApiTestRepository
 
     private val mCompositeDisposable = CompositeDisposable()

@@ -9,29 +9,28 @@ import android.widget.Button
 import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
-import dagger.android.AndroidInjection
 import seigneur.gauvain.chdm.R
+import seigneur.gauvain.chdm.data.api.CooperHewittService
+import seigneur.gauvain.chdm.data.repository.ApiTestRepository
 import timber.log.Timber
-import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
     @BindView(R.id.btn)
     lateinit var mbutton: Button
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private lateinit var mMainViewModelFactory: MainViewModelFactory
 
-    private val mMainViewModel: MainViewModel by lazy {
-        ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
-    }
+    private lateinit var mMainViewModel: MainViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         ButterKnife.bind(this)
+        val vApiTestRepository= ApiTestRepository(CooperHewittService.create())
+        mMainViewModelFactory = MainViewModelFactory(vApiTestRepository)
+        mMainViewModel = ViewModelProviders.of(this, mMainViewModelFactory).get(MainViewModel::class.java)
         mMainViewModel.init()
         subscribeToLiveData(mMainViewModel)
     }
@@ -53,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 
     @OnClick(R.id.btn)
     fun getExhibition() {
-        mMainViewModel.getExhibitionsAndObjectsForEach()
+        mMainViewModel?.getHours()
     }
 
 }

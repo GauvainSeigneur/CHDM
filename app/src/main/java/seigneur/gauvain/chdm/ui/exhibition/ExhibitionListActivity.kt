@@ -19,7 +19,6 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
 import butterknife.Optional
-import dagger.android.AndroidInjection
 import seigneur.gauvain.chdm.R
 import seigneur.gauvain.chdm.data.model.exhibition.Exhibition
 import seigneur.gauvain.chdm.data.model.exhibition.ExhibitionList
@@ -28,17 +27,10 @@ import seigneur.gauvain.chdm.ui.exhibition.list.adapter.ExhibitionListAdapter
 import seigneur.gauvain.chdm.ui.exhibition.list.data.NetworkState
 import seigneur.gauvain.chdm.ui.exhibition.list.data.Status
 import timber.log.Timber
-import javax.inject.Inject
 
 class ExhibitionListActivity : AppCompatActivity(), ExhibitionItemCallback {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-
-    private val mExhibitionListViewModel: ExhibitionListViewModel by lazy {
-        ViewModelProviders.of(this, viewModelFactory).get(ExhibitionListViewModel::class.java)
-    }
-
+    lateinit var mExhibitionListViewModel:ExhibitionListViewModel
 
     @BindView(R.id.mSwipeRefreshLayout)
     lateinit var mSwipeRefreshLayout: SwipeRefreshLayout
@@ -64,7 +56,6 @@ class ExhibitionListActivity : AppCompatActivity(), ExhibitionItemCallback {
     lateinit var mLinearLayoutManager: LinearLayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exhibition_list)
         ButterKnife.bind(this)
