@@ -1,10 +1,10 @@
 package seigneur.gauvain.chdm.data.repository
 
-
 import io.reactivex.Flowable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import org.koin.standalone.KoinComponent
 import retrofit2.Response
 import seigneur.gauvain.chdm.data.api.ApiSecret
 import seigneur.gauvain.chdm.data.api.CooperHewittService
@@ -12,7 +12,10 @@ import seigneur.gauvain.chdm.data.model.exhibition.Exhibition
 import seigneur.gauvain.chdm.data.model.exhibition.ExhibitionList
 import timber.log.Timber
 
-class ApiTestRepository(var mCooperHewittService:CooperHewittService) {
+class ApiTestRepository(val mCooperHewittService:CooperHewittService):KoinComponent {
+
+    // lazy inject Koin instance
+    //val mCooperHewittService : CooperHewittService by inject()
 
     //get hours
     fun getHours(): Single<Response<Void>>?  {

@@ -43,7 +43,6 @@ interface CooperHewittService {
     companion object {
         fun create(): CooperHewittService {
 
-
             val mHttpLoggingInterceptor = HttpLoggingInterceptor()
             mHttpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
@@ -56,10 +55,7 @@ interface CooperHewittService {
                 .baseUrl(BASE_URL)
                 .build()
 
-
             return retrofit.create(CooperHewittService::class.java)
-
-
         }
 
         private val BASE_URL = "https://api.collection.cooperhewitt.org/rest/"

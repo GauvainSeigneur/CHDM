@@ -9,6 +9,8 @@ import android.widget.Button
 import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
+import org.koin.android.ext.android.inject
+import org.koin.android.viewmodel.ext.android.viewModel
 import seigneur.gauvain.chdm.R
 import seigneur.gauvain.chdm.data.api.CooperHewittService
 import seigneur.gauvain.chdm.data.repository.ApiTestRepository
@@ -21,16 +23,25 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var mMainViewModelFactory: MainViewModelFactory
 
-    private lateinit var mMainViewModel: MainViewModel
+   // private lateinit var mMainViewModel: MainViewModel
 
+    // Lazy injected Presenter instance
+    private val mApiTestRepository : ApiTestRepository by inject()
+
+    //private val mMainViewModel : MainViewModel by inject()
+
+    /*
+    * Declare MainViewModel with Koin and allow constructor dependency injection
+    */
+    private val mMainViewModel by viewModel<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         ButterKnife.bind(this)
-        val vApiTestRepository= ApiTestRepository(CooperHewittService.create())
-        mMainViewModelFactory = MainViewModelFactory(vApiTestRepository)
-        mMainViewModel = ViewModelProviders.of(this, mMainViewModelFactory).get(MainViewModel::class.java)
+        //val vApiTestRepository= ApiTestRepository()
+        //mMainViewModelFactory = MainViewModelFactory(mApiTestRepository)
+        //mMainViewModel = ViewModelProviders.of(this, mMainViewModelFactory).get(MainViewModel::class.java)
         mMainViewModel.init()
         subscribeToLiveData(mMainViewModel)
     }

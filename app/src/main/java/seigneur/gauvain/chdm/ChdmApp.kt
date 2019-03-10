@@ -1,14 +1,20 @@
 package seigneur.gauvain.chdm
 
-import android.app.Activity
 import android.app.Application
 import com.squareup.leakcanary.LeakCanary
+import org.koin.android.ext.android.startKoin
+import org.koin.standalone.KoinComponent
+import seigneur.gauvain.chdm.di.networkModule
+import seigneur.gauvain.chdm.di.repoModule
+import seigneur.gauvain.chdm.di.viewModelModule
 import seigneur.gauvain.chdm.utils.timber.TimberLog
 
-class ChdmApp : Application() {
+class ChdmApp : Application(), KoinComponent {
 
     override fun onCreate() {
         super.onCreate()
+        // Start Koin
+        startKoin(this, listOf(networkModule, repoModule, viewModelModule))
         TimberLog.init() //Init timberLog
         //setupLeakCanary()
     }
