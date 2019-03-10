@@ -1,7 +1,7 @@
 package seigneur.gauvain.chdm.ui.exhibition.list.data.datasource
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.paging.DataSource
+import androidx.lifecycle.MutableLiveData
+import androidx.paging.DataSource
 
 import io.reactivex.disposables.CompositeDisposable
 import seigneur.gauvain.chdm.data.model.exhibition.Exhibition

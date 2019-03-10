@@ -1,8 +1,8 @@
 package seigneur.gauvain.chdm.ui.exhibition.list.adapter
 
-import android.arch.paging.PagedListAdapter
-import android.support.v7.util.DiffUtil
-import android.support.v7.widget.RecyclerView
+import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import seigneur.gauvain.chdm.data.model.exhibition.Exhibition
 import seigneur.gauvain.chdm.ui.exhibition.list.data.NetworkState

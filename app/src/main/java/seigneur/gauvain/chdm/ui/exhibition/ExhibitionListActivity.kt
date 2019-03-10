@@ -1,15 +1,15 @@
 package seigneur.gauvain.chdm.ui.exhibition
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
-import android.arch.paging.PagedList
-import android.support.v7.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import androidx.paging.PagedList
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.widget.SwipeRefreshLayout
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
@@ -19,6 +19,7 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
 import butterknife.Optional
+import org.koin.android.viewmodel.ext.android.viewModel
 import seigneur.gauvain.chdm.R
 import seigneur.gauvain.chdm.data.model.exhibition.Exhibition
 import seigneur.gauvain.chdm.data.model.exhibition.ExhibitionList
@@ -26,11 +27,15 @@ import seigneur.gauvain.chdm.ui.exhibition.list.adapter.ExhibitionItemCallback
 import seigneur.gauvain.chdm.ui.exhibition.list.adapter.ExhibitionListAdapter
 import seigneur.gauvain.chdm.ui.exhibition.list.data.NetworkState
 import seigneur.gauvain.chdm.ui.exhibition.list.data.Status
+import seigneur.gauvain.chdm.ui.main.MainViewModel
 import timber.log.Timber
 
 class ExhibitionListActivity : AppCompatActivity(), ExhibitionItemCallback {
 
-    lateinit var mExhibitionListViewModel:ExhibitionListViewModel
+    /*
+* Declare MainViewModel with Koin and allow constructor dependency injection
+*/
+    private val mExhibitionListViewModel by viewModel<ExhibitionListViewModel>()
 
     @BindView(R.id.mSwipeRefreshLayout)
     lateinit var mSwipeRefreshLayout: SwipeRefreshLayout

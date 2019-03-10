@@ -1,8 +1,8 @@
 package seigneur.gauvain.chdm.data.local
 
-import android.arch.persistence.room.Database
-import android.arch.persistence.room.RoomDatabase
-import android.arch.persistence.room.TypeConverters
+import androidx.room.Database
+import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 
 import seigneur.gauvain.chdm.data.local.dao.TokenDao
 import seigneur.gauvain.chdm.data.model.Token

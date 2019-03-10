@@ -3,6 +3,7 @@ package seigneur.gauvain.chdm.di
 import org.koin.android.viewmodel.experimental.builder.viewModel
 import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
+import seigneur.gauvain.chdm.ui.exhibition.ExhibitionListViewModel
 import seigneur.gauvain.chdm.ui.main.MainViewModel
 
 
@@ -13,6 +14,11 @@ import seigneur.gauvain.chdm.ui.main.MainViewModel
     viewModel {
             MainViewModel(get())
         }
+
+    viewModel {
+        ExhibitionListViewModel(get())
+        }
+
     }
 
 

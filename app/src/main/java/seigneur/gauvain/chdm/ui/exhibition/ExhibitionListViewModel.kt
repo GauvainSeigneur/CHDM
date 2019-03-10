@@ -1,12 +1,12 @@
 package seigneur.gauvain.chdm.ui.exhibition
 
-import android.arch.core.util.Function
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.Transformations
-import android.arch.lifecycle.ViewModel
-import android.arch.paging.LivePagedListBuilder
-import android.arch.paging.PagedList
+import androidx.arch.core.util.Function
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
+import androidx.lifecycle.ViewModel
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
 
 import io.reactivex.disposables.CompositeDisposable
 import seigneur.gauvain.chdm.data.model.exhibition.Exhibition
@@ -19,9 +19,8 @@ import seigneur.gauvain.chdm.ui.exhibition.list.data.datasource.ExhibitionsDataS
 
 class ExhibitionListViewModel
 
-constructor() : ViewModel() {
+constructor(val mApiTestRepository: ApiTestRepository) : ViewModel() {
 
-    lateinit var mApiTestRepository: ApiTestRepository
 
     private val mCompositeDisposable = CompositeDisposable()
 
