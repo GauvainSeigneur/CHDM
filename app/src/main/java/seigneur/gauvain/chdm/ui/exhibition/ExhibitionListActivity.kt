@@ -11,14 +11,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
-import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.ProgressBar
-import android.widget.TextView
-import butterknife.BindView
-import butterknife.ButterKnife
-import butterknife.OnClick
-import butterknife.Optional
+import kotlinx.android.synthetic.main.activity_exhibition_list.*
+import kotlinx.android.synthetic.main.list_item_network_state.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import seigneur.gauvain.chdm.R
 import seigneur.gauvain.chdm.data.model.exhibition.Exhibition
@@ -33,27 +27,9 @@ import timber.log.Timber
 class ExhibitionListActivity : AppCompatActivity(), ExhibitionItemCallback {
 
     /*
-* Declare MainViewModel with Koin and allow constructor dependency injection
-*/
+    * Declare MainViewModel with Koin and allow constructor dependency injection
+    */
     private val mExhibitionListViewModel by viewModel<ExhibitionListViewModel>()
-
-    @BindView(R.id.mSwipeRefreshLayout)
-    lateinit var mSwipeRefreshLayout: SwipeRefreshLayout
-
-    @BindView(R.id.rvShots)
-    lateinit var mRvShots: RecyclerView
-
-    @BindView(R.id.globalNetworkState)
-    lateinit var globalNetworkState: LinearLayout
-
-    @BindView(R.id.errorMessageTextView)
-    lateinit var errorMessageTextView: TextView
-
-    @BindView(R.id.retryLoadingButton)
-    lateinit var retryLoadingButton: Button
-
-    @BindView(R.id.loadingProgressBar)
-    lateinit var loadingProgressBar: ProgressBar
 
     private val exhibitionListAdapter: ExhibitionListAdapter by lazy {
         ExhibitionListAdapter(this)
@@ -63,7 +39,6 @@ class ExhibitionListActivity : AppCompatActivity(), ExhibitionItemCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exhibition_list)
-        ButterKnife.bind(this)
         mExhibitionListViewModel.init()
         initAdapter()
         initSwipeToRefresh()
@@ -92,10 +67,10 @@ class ExhibitionListActivity : AppCompatActivity(), ExhibitionItemCallback {
 
 
     private fun initAdapter() {
-        if (mRvShots.layoutManager==null && mRvShots.adapter==null) {
+        if (rvShots.layoutManager==null && rvShots.adapter==null) {
             mLinearLayoutManager = LinearLayoutManager(this)
-            mRvShots.layoutManager =  mLinearLayoutManager
-            mRvShots.adapter = exhibitionListAdapter
+            rvShots.layoutManager =  mLinearLayoutManager
+            rvShots.adapter = exhibitionListAdapter
 
         }
 
@@ -116,8 +91,8 @@ class ExhibitionListActivity : AppCompatActivity(), ExhibitionItemCallback {
         mSwipeRefreshLayout.isEnabled = networkState.status == Status.SUCCESS
     }
 
-    @Optional
-    @OnClick(R.id.retryLoadingButton)
+    //@Optional
+    //@OnClick(R.id.retryLoadingButton)
     internal fun retryInitialLoading() {
         mExhibitionListViewModel.retry()
     }

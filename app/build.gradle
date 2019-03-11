@@ -80,9 +80,6 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-scalars:$retrofitVersion"
     // optional - RxJava support for Retrofit
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
-    def butterKnifeVersion = '10.1.0'
-    kapt "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
-    implementation "com.jakewharton:butterknife:$butterKnifeVersion"
     //Canary leak
     def canaryVersion = '1.6.1'
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$canaryVersion"

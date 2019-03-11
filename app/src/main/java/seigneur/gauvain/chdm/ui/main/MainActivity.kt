@@ -6,9 +6,6 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import butterknife.BindView
-import butterknife.ButterKnife
-import butterknife.OnClick
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import seigneur.gauvain.chdm.R
@@ -18,8 +15,6 @@ import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
 
-    @BindView(R.id.btn)
-    lateinit var mbutton: Button
 
     private lateinit var mMainViewModelFactory: MainViewModelFactory
 
@@ -38,7 +33,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        ButterKnife.bind(this)
         //val vApiTestRepository= ApiTestRepository()
         //mMainViewModelFactory = MainViewModelFactory(mApiTestRepository)
         //mMainViewModel = ViewModelProviders.of(this, mMainViewModelFactory).get(MainViewModel::class.java)
@@ -61,7 +55,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    @OnClick(R.id.btn)
+
     fun getExhibition() {
         mMainViewModel?.getHours()
     }

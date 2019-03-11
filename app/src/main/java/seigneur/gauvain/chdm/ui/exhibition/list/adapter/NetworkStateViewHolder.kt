@@ -5,13 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 
-
-import butterknife.BindView
-import butterknife.ButterKnife
-import butterknife.Optional
 import seigneur.gauvain.chdm.R
 import seigneur.gauvain.chdm.ui.exhibition.list.data.NetworkState
 import seigneur.gauvain.chdm.ui.exhibition.list.data.Status
@@ -19,17 +16,11 @@ import seigneur.gauvain.chdm.ui.exhibition.list.data.Status
 
 class NetworkStateViewHolder(itemView: View, exhibitionItemCallback: ExhibitionItemCallback) : RecyclerView.ViewHolder(itemView) {
 
-    @BindView(R.id.errorMessageTextView)
-    lateinit var errorMessageTextView: TextView
-
-    @BindView(R.id.retryLoadingButton)
-    lateinit var retryLoadingButton: Button
-
-    @BindView(R.id.loadingProgressBar)
-    lateinit var loadingProgressBar: ProgressBar
+    val errorMessageTextView = itemView.findViewById(R.id.errorMessageTextView) as TextView
+    val retryLoadingButton = itemView.findViewById(R.id.retryLoadingButton) as Button
+    val loadingProgressBar = itemView.findViewById(R.id.loadingProgressBar) as ProgressBar
 
     init {
-        ButterKnife.bind(this, itemView)
         retryLoadingButton.setOnClickListener { _ -> exhibitionItemCallback.retry() }
     }
 
