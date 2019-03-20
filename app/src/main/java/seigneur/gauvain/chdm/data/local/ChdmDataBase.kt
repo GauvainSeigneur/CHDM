@@ -13,8 +13,6 @@ import seigneur.gauvain.chdm.utils.RoomConverter
 abstract class ChdmDataBase : RoomDatabase() {
         // DAO
     abstract fun tokenDao(): TokenDao
-
-
 }
 
 

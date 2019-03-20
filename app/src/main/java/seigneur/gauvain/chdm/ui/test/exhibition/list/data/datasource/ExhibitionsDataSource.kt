@@ -1,7 +1,6 @@
-package seigneur.gauvain.chdm.ui.exhibition.list.data.datasource
+package seigneur.gauvain.chdm.ui.test.exhibition.list.data.datasource
 
 import androidx.lifecycle.MutableLiveData
-import androidx.paging.ItemKeyedDataSource
 import androidx.paging.PageKeyedDataSource
 
 
@@ -12,7 +11,7 @@ import io.reactivex.functions.Action
 import io.reactivex.schedulers.Schedulers
 import seigneur.gauvain.chdm.data.model.exhibition.Exhibition
 import seigneur.gauvain.chdm.data.repository.ApiTestRepository
-import seigneur.gauvain.chdm.ui.exhibition.list.data.NetworkState
+import seigneur.gauvain.chdm.ui.test.exhibition.list.data.NetworkState
 import timber.log.Timber
 
 
@@ -138,16 +137,16 @@ class ExhibitionsDataSource
      */
     private fun onLoadListComplete(exhibitionList:ArrayList<Exhibition>,
                                    loadMode:Int,
-                                   paramsInitial: PageKeyedDataSource.LoadInitialParams<Long>?=null,
-                                   callbackInitial: PageKeyedDataSource.LoadInitialCallback<Long, Exhibition>?=null,
-                                   paramsAfter: PageKeyedDataSource.LoadParams<Long>?=null,
+                                   paramsInitial: PageKeyedDataSource.LoadInitialParams<Long>?,
+                                   callbackInitial: PageKeyedDataSource.LoadInitialCallback<Long, Exhibition>?,
+                                   paramsAfter: PageKeyedDataSource.LoadParams<Long>?,
                                    callbackAfter: PageKeyedDataSource.LoadCallback<Long, Exhibition>?=null) {
         when(loadMode) {
             LOAD_INITIAL-> {
                 setRetry(null)
                 networkState.postValue(NetworkState.LOADED)
                 initialLoad.postValue(NetworkState.LOADED)
-                callbackInitial!!.onResult(exhibitionList, null, 2L)
+                callbackInitial?.onResult(exhibitionList, null, 2L)
 
             }
             LOAD_AFTER -> {
@@ -155,7 +154,7 @@ class ExhibitionsDataSource
                 // clear retry since last request succeeded
                 setRetry(null)
                 networkState.postValue(NetworkState.LOADED)
-                callbackAfter!!.onResult(exhibitionList, nextKey)
+                callbackAfter?.onResult(exhibitionList, nextKey)
             }
         }
     }
@@ -165,10 +164,10 @@ class ExhibitionsDataSource
      */
     private fun onLoadListError(loadMode:Int,
                                 throwable: Throwable,
-                                paramsInitial: PageKeyedDataSource.LoadInitialParams<Long>?=null,
-                                callbackInitial: PageKeyedDataSource.LoadInitialCallback<Long, Exhibition>?=null,
-                                paramsAfter: PageKeyedDataSource.LoadParams<Long>?=null,
-                                callbackAfter: PageKeyedDataSource.LoadCallback<Long, Exhibition>?=null) {
+                                paramsInitial: PageKeyedDataSource.LoadInitialParams<Long>?,
+                                callbackInitial: PageKeyedDataSource.LoadInitialCallback<Long, Exhibition>?,
+                                paramsAfter: PageKeyedDataSource.LoadParams<Long>?,
+                                callbackAfter: PageKeyedDataSource.LoadCallback<Long, Exhibition>?) {
 
         when(loadMode) {
             LOAD_INITIAL-> {

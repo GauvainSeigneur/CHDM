@@ -1,17 +1,16 @@
-package seigneur.gauvain.chdm.ui.exhibition.list.adapter
+package seigneur.gauvain.chdm.ui.test.exhibition.list.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 
 import seigneur.gauvain.chdm.R
-import seigneur.gauvain.chdm.ui.exhibition.list.data.NetworkState
-import seigneur.gauvain.chdm.ui.exhibition.list.data.Status
+import seigneur.gauvain.chdm.ui.test.exhibition.list.data.NetworkState
+import seigneur.gauvain.chdm.ui.test.exhibition.list.data.Status
 
 
 class NetworkStateViewHolder(itemView: View, exhibitionItemCallback: ExhibitionItemCallback) : RecyclerView.ViewHolder(itemView) {

@@ -1,11 +1,11 @@
-package seigneur.gauvain.chdm.ui.exhibition.list.adapter
+package seigneur.gauvain.chdm.ui.test.exhibition.list.adapter
 
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import seigneur.gauvain.chdm.data.model.exhibition.Exhibition
-import seigneur.gauvain.chdm.ui.exhibition.list.data.NetworkState
+import seigneur.gauvain.chdm.ui.test.exhibition.list.data.NetworkState
 
 class ExhibitionListAdapter(private val exhibitionItemCallback: ExhibitionItemCallback)
     : PagedListAdapter<Exhibition, RecyclerView.ViewHolder>(UserDiffCallback) {

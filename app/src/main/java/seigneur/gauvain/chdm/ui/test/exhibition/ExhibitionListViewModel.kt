@@ -1,8 +1,7 @@
-package seigneur.gauvain.chdm.ui.exhibition
+package seigneur.gauvain.chdm.ui.test.exhibition
 
 import androidx.arch.core.util.Function
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
@@ -10,11 +9,10 @@ import androidx.paging.PagedList
 
 import io.reactivex.disposables.CompositeDisposable
 import seigneur.gauvain.chdm.data.model.exhibition.Exhibition
-import timber.log.Timber
 import seigneur.gauvain.chdm.data.repository.ApiTestRepository
-import seigneur.gauvain.chdm.ui.exhibition.list.data.NetworkState
-import seigneur.gauvain.chdm.ui.exhibition.list.data.datasource.ExhibitionDataSourceFactory
-import seigneur.gauvain.chdm.ui.exhibition.list.data.datasource.ExhibitionsDataSource
+import seigneur.gauvain.chdm.ui.test.exhibition.list.data.NetworkState
+import seigneur.gauvain.chdm.ui.test.exhibition.list.data.datasource.ExhibitionDataSourceFactory
+import seigneur.gauvain.chdm.ui.test.exhibition.list.data.datasource.ExhibitionsDataSource
 
 
 class ExhibitionListViewModel

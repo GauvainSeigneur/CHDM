@@ -11,6 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
+import seigneur.gauvain.chdm.data.model.chdmObject.ChdmObjectResponse
 import seigneur.gauvain.chdm.data.model.exhibition.Exhibition
 import seigneur.gauvain.chdm.data.model.exhibition.ExhibitionList
 
@@ -18,6 +19,13 @@ import seigneur.gauvain.chdm.data.model.exhibition.ExhibitionList
  * Created by Gauvain on 25/02/2018.
  */
 interface CooperHewittService {
+
+    @GET("?method=cooperhewitt.objects.getRandom")
+    fun getRandomObject(
+        @Query("access_token") accessToken: String,
+        @Query("has_image") hasImage: Int
+    ): Single<ChdmObjectResponse>
+
 
     @GET("?method=cooperhewitt.cafe.openingHours")
     fun getCafeHours(

@@ -1,6 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Original AppCompat attributes. -->
         <item name="colorSecondary">@color/colorSecondary</item>
@@ -11,9 +10,9 @@
         <item name="colorError">@color/colorError</item>
         <item name="android:colorError" tools:targetApi="26">@color/colorError</item>
         <!--<item name="android:textColor"></item> -->
-        <item name="android:statusBarColor">@color/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">@color/colorPrimary</item>
         <!-- <item name="android:windowLightStatusBar" tools:targetApi="23">true</item> -->
-        <item name="android:navigationBarColor">@color/colorNavigationBar</item>
+        <item name="android:navigationBarColor">@color/colorPrimary</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
         <item name="android:colorEdgeEffect">@color/colorSecondary</item>
         <item name="android:fontFamily">@font/cooper_hewitt_medium</item>
@@ -43,5 +42,15 @@
         <item name="android:windowContentTransitions">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
     </style>
+
+    <style name="BottomNavigationTheme" parent="Widget.Design.BottomNavigationView">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="itemHorizontalTranslationEnabled">false</item>
+        <!--<item name="itemIconSize">@dimen/bottom_nav_icon_size</item> -->
+        <item name="itemIconTint">@drawable/selector_item_menu_bottom_nav</item>
+        <item name="itemTextColor">@drawable/selector_item_menu_bottom_nav</item>
+        <item name="labelVisibilityMode">labeled</item>
+    </style>
+
 
 </resources>

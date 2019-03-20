@@ -1,33 +1,26 @@
-package seigneur.gauvain.chdm.ui.exhibition
+package seigneur.gauvain.chdm.ui.test.exhibition
 
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.paging.PagedList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import kotlinx.android.synthetic.main.activity_exhibition_list.*
 import kotlinx.android.synthetic.main.list_item_network_state.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import seigneur.gauvain.chdm.R
 import seigneur.gauvain.chdm.data.model.exhibition.Exhibition
-import seigneur.gauvain.chdm.data.model.exhibition.ExhibitionList
-import seigneur.gauvain.chdm.ui.exhibition.list.adapter.ExhibitionItemCallback
-import seigneur.gauvain.chdm.ui.exhibition.list.adapter.ExhibitionListAdapter
-import seigneur.gauvain.chdm.ui.exhibition.list.data.NetworkState
-import seigneur.gauvain.chdm.ui.exhibition.list.data.Status
-import seigneur.gauvain.chdm.ui.main.MainViewModel
+import seigneur.gauvain.chdm.ui.test.exhibition.list.adapter.ExhibitionItemCallback
+import seigneur.gauvain.chdm.ui.test.exhibition.list.adapter.ExhibitionListAdapter
+import seigneur.gauvain.chdm.ui.test.exhibition.list.data.NetworkState
+import seigneur.gauvain.chdm.ui.test.exhibition.list.data.Status
 import timber.log.Timber
 
 class ExhibitionListActivity : AppCompatActivity(), ExhibitionItemCallback {
 
     /*
-    * Declare MainViewModel with Koin and allow constructor dependency injection
+    * Declare TestViewModel with Koin and allow constructor dependency injection
     */
     private val mExhibitionListViewModel by viewModel<ExhibitionListViewModel>()
 

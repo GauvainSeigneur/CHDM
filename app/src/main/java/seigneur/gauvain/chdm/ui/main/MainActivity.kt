@@ -1,63 +1,73 @@
 package seigneur.gauvain.chdm.ui.main
 
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import org.koin.android.ext.android.inject
-import org.koin.android.viewmodel.ext.android.viewModel
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.activity_main.*
 import seigneur.gauvain.chdm.R
-import seigneur.gauvain.chdm.data.api.CooperHewittService
-import seigneur.gauvain.chdm.data.repository.ApiTestRepository
-import timber.log.Timber
+import seigneur.gauvain.chdm.ui.objects.ObjectFragment
+import seigneur.gauvain.chdm.ui.home.HomeFragment
+import seigneur.gauvain.chdm.utils.FragmentStateManager
 
 class MainActivity : AppCompatActivity() {
 
 
-    private lateinit var mMainViewModelFactory: MainViewModelFactory
+    private var mFragmentStateManager: FragmentStateManager? = null
 
-   // private lateinit var mMainViewModel: MainViewModel
-
-    // Lazy injected Presenter instance
-    private val mApiTestRepository : ApiTestRepository by inject()
-
-    //private val mMainViewModel : MainViewModel by inject()
-
-    /*
-    * Declare MainViewModel with Koin and allow constructor dependency injection
-    */
-    private val mMainViewModel by viewModel<MainViewModel>()
-
+    /**
+     * From AppCompatActivity
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //val vApiTestRepository= ApiTestRepository()
-        //mMainViewModelFactory = MainViewModelFactory(mApiTestRepository)
-        //mMainViewModel = ViewModelProviders.of(this, mMainViewModelFactory).get(MainViewModel::class.java)
-        mMainViewModel.init()
-        subscribeToLiveData(mMainViewModel)
+        //navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        initFragmentManager(savedInstanceState)
+        mBottomNavigation.setOnNavigationItemSelectedListener { item ->
+            showFragment(  getNavPositionFromMenuItem(item))
+            true
+        }
+
+        mBottomNavigation.setOnNavigationItemReselectedListener { item ->
+
+        }
     }
 
-
-    private fun subscribeToLiveData(viewModel: MainViewModel) {
-        viewModel.
-            exhibitionList.
-            observe(this,
-                Observer { list ->
-                    for (i in 0 until list!!.size) {
-                        Timber.d("activity received List:" +list[i].id+": " + list[i].illustrationUrl)
-                    }
-
+    /**
+     * Initialize Fragment manager and default value
+     */
+    private fun initFragmentManager(savedInstanceState: Bundle?) {
+        mFragmentStateManager = object : FragmentStateManager(mfragmentContainer, supportFragmentManager) {
+            override fun getItem(position: Int): Fragment {
+                when (position) {
+                    0 -> return HomeFragment()
+                    1 -> return ObjectFragment()
+                    3 -> return HomeFragment()
                 }
-            )
+                return HomeFragment()
+            }
+        }
+        if (savedInstanceState == null) {
+            mFragmentStateManager?.changeFragment(0)
+        }
     }
 
-
-
-    fun getExhibition() {
-        mMainViewModel?.getHours()
+    /**
+     * get position form item id in bottom navigation menu
+     */
+    private fun getNavPositionFromMenuItem(menuItem: MenuItem): Int {
+        return when (menuItem.itemId) {
+            R.id.navigation_home                ->  0
+            R.id.navigation_dashboard           ->  1
+            R.id.navigation_notifications       ->  2
+            else                                -> -1
+        }
     }
 
+    /**
+     * Show a fragment thanks to mFragmentStateManager
+     */
+    private fun showFragment(pos: Int) {
+        mFragmentStateManager?.changeFragment(pos)
+    }
 }

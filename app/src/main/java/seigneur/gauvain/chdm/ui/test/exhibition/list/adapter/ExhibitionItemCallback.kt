@@ -1,4 +1,4 @@
-package seigneur.gauvain.chdm.ui.exhibition.list.adapter
+package seigneur.gauvain.chdm.ui.test.exhibition.list.adapter
 
 
 interface ExhibitionItemCallback {

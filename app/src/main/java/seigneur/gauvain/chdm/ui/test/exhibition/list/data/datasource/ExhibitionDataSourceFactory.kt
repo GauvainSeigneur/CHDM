@@ -1,4 +1,4 @@
-package seigneur.gauvain.chdm.ui.exhibition.list.data.datasource
+package seigneur.gauvain.chdm.ui.test.exhibition.list.data.datasource
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
