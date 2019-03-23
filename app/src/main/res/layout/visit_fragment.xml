@@ -8,6 +8,6 @@
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="dernière exhibitions (celles en cours/limiter à un nombre max ? )/ Départements (text stylysé) (avec possibilité de visualiser tous les objets associés (via API SEARCH) / period ( limiter pui autoriser à visualiser toutes les périodes"/>
+                android:text="Visit fragment"/>
 
 </LinearLayout>

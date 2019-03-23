@@ -27,11 +27,6 @@ interface CooperHewittService {
     ): Single<ChdmObjectResponse>
 
 
-    @GET("?method=cooperhewitt.cafe.openingHours")
-    fun getCafeHours(
-        @Query("access_token") accessToken: String):
-            Single<Response<Void>>
-
     @GET("?method=cooperhewitt.exhibitions.getList")
     fun getExhibitions(
         @Query("access_token") accessToken: String,
@@ -47,6 +42,15 @@ interface CooperHewittService {
         @Query("per_page") perPage: Int
     ): Flowable<Exhibition.ExhibitionObjects>
 
+    @GET("?method=cooperhewitt.cafe.openingHours")
+    fun getCafeHours(
+        @Query("access_token") accessToken: String):
+            Single<Response<Void>>
+
+    @GET("?method=cooperhewitt.galeries.openingHours")
+    fun getGalleriesOpeningHours(
+        @Query("access_token") accessToken: String):
+            Single<Response<Void>>
 
     companion object {
         fun create(): CooperHewittService {

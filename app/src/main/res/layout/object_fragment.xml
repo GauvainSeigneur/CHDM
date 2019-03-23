@@ -2,7 +2,6 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/parent"
@@ -45,5 +44,11 @@
                 </com.google.android.material.appbar.CollapsingToolbarLayout>
 
         </com.google.android.material.appbar.AppBarLayout>
+
+        <TextView
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Image(accès à toutes images dans une activité dédiée)/Titre/Description/Tags (Possibilité de charger d'autres objets avec)/is ondisplay?/Persons "/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

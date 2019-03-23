@@ -1,4 +1,4 @@
-package seigneur.gauvain.chdm.ui.objects
+package seigneur.gauvain.chdm.utils
 
 
 import android.graphics.drawable.Drawable
@@ -9,11 +9,11 @@ import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.transition.DrawableCrossFadeTransition
 
 
-class MyImageRequestListener(private val callback: Callback? = null) : RequestListener<Drawable> {
+class ImageRequestListener(private val callback: Callback? = null) : RequestListener<Drawable> {
 
     interface Callback {
-        fun onFailure(message: String?)
-        fun onSuccess(dataSource: String)
+        fun onLoadImageFailure(message: String?)
+        fun onLoadImageSuccess(dataSource: String)
     }
 
     override fun onLoadFailed(e: GlideException?,
@@ -21,7 +21,7 @@ class MyImageRequestListener(private val callback: Callback? = null) : RequestLi
                               target: Target<Drawable>,
                               isFirstResource: Boolean): Boolean {
 
-        callback?.onFailure(e?.message)
+        callback?.onLoadImageFailure(e?.message)
         return false
     }
 
@@ -31,7 +31,7 @@ class MyImageRequestListener(private val callback: Callback? = null) : RequestLi
                                  dataSource: DataSource,
                                  isFirstResource: Boolean): Boolean {
 
-        callback?.onSuccess(dataSource.toString())
+        callback?.onLoadImageSuccess(dataSource.toString())
         target.onResourceReady(resource, DrawableCrossFadeTransition(1000, isFirstResource))
         return true
     }

@@ -44,12 +44,12 @@
     </style>
 
     <style name="BottomNavigationTheme" parent="Widget.Design.BottomNavigationView">
-        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:background">@android:color/transparent</item>
         <item name="itemHorizontalTranslationEnabled">false</item>
         <!--<item name="itemIconSize">@dimen/bottom_nav_icon_size</item> -->
         <item name="itemIconTint">@drawable/selector_item_menu_bottom_nav</item>
         <item name="itemTextColor">@drawable/selector_item_menu_bottom_nav</item>
-        <item name="labelVisibilityMode">labeled</item>
+        <item name="labelVisibilityMode">selected</item>
     </style>
 
 
