@@ -21,8 +21,6 @@ import seigneur.gauvain.chdm.utils.FragmentStateManager
 
 class MainActivity : AppCompatActivity() {
 
-
-
     private var mFragmentStateManager: FragmentStateManager? = null
 
     /**

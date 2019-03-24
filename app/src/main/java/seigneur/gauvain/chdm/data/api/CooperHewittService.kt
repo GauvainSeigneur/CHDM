@@ -26,6 +26,12 @@ interface CooperHewittService {
         @Query("has_image") hasImage: Int
     ): Single<ChdmObjectResponse>
 
+    @GET("?method=cooperhewitt.exhibitions.getList")
+    fun getExhibibitionList(
+        @Query("access_token") accessToken: String,
+        @Query("page") page: Long,
+        @Query("per_page") pagePage: Int
+    ): Flowable<Response<ExhibitionList>>
 
     @GET("?method=cooperhewitt.exhibitions.getList")
     fun getExhibitions(

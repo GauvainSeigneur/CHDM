@@ -4,8 +4,8 @@
     <color name="colorPrimaryVariant">#1F1F1F</color> <!--0c0c0c -->
     <color name="colorSecondary">#ff6927</color> <!--ff7b40-->
     <color name="colorSecondaryVariant">#ff47af</color>
-    <color name="colorSurface">@color/colorPrimary</color>
-    <color name="colorBackground">#F5EBE5</color> <!--fafafa / ECEFF4 / E0E0E0/ F5EBE5/ CFC8B6-->
+    <color name="colorSurface">#fafafa</color>
+    <color name="colorBackground">#ECEFF4</color> <!--fafafa / ECEFF4 / E0E0E0/ F5EBE5/ CFC8B6-->
     <color name="colorError">#ec391d</color>
     <color name="colorOnPrimary">#fafafa</color>
     <color name="colorOnSecondary">#fafafa</color>

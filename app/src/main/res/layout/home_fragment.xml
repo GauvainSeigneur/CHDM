@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="dernière exhibitions (celles en cours/limiter à un nombre max ? )/ Départements (text stylysé) (avec possibilité de visualiser tous les objets associés (via API SEARCH) / period ( limiter pui autoriser à visualiser toutes les périodes"/>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Current Exhibitions"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mCurrentExhibRV"
+        android:layout_width="match_parent"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="dernière exhibitions (celles en cours/limiter à un nombre max ? )/ Départements (text stylysé) (avec possibilité de visualiser tous les objets associés (via API SEARCH) / period ( limiter pui autoriser à visualiser toutes les périodes"/>
 
 </LinearLayout>

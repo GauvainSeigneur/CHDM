@@ -24,7 +24,7 @@ class ApiTestRepository(val mCooperHewittService:CooperHewittService):KoinCompon
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    fun getExhibitions(): Flowable<ExhibitionList> ? {
+    fun getExhibitions(): Flowable<ExhibitionList>  {
         Timber.d("getExhibitions called")
         return mCooperHewittService.getExhibitions(ApiSecret.ACCESS_TOKEN,1,10)
             .subscribeOn(Schedulers.io())
